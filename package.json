@@ -23,8 +23,7 @@
   "scripts": {
     "test": "jest --no-cache ./*",
     "watch": "jest --no-cache --watch ./*",
-    "edit-distance": "jest --no-cache --watch ./src/edit-distance*",
-    "runlength": "jest --no-cache --watch ./src/runlength*",
+    "watch-folder": "jest --no-cache --watch ./src/$0",
     "lint": "eslint .",
     "lint-test": "eslint . && jest --no-cache ./* "
   },
