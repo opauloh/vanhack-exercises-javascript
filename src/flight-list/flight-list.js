@@ -1,22 +1,16 @@
 //
 
-
 const buildFlightItinerary = (flightList, startingPoint, itinerary) => {
 
     const findTravel = flightList.find(travel => travel.from === startingPoint);
 
-    if (!findTravel) {
-        return null;
-    }
-
+    if (!findTravel) return null;
 
     itinerary.push(findTravel);
 
     flightList = flightList.filter(travel => travel !== findTravel);
 
-    if (flightList.length === 0) {
-        return itinerary;
-    }
+    if (flightList.length === 0) return itinerary;
 
     return buildFlightItinerary(flightList, findTravel.to, itinerary);
 }
@@ -26,12 +20,6 @@ const parseItinerary = (itineraryList) => {
 }
 
 export const flightItinerary = (flightList, startingPoint) => {
-    // const startingPoints = flightList.map(travel => travel[0]);
-    // const endingPoints = flightList.map(travel => travel[1]);
-
-    // console.log(startingPoints);
-    // console.log(endingPoints);
-    // console.log('----flightList----', flightList);
 
     let itinerary = [];
 
@@ -48,23 +36,4 @@ export const flightItinerary = (flightList, startingPoint) => {
     if (!resultFlightItinerary) return null;
 
     return parseItinerary(itinerary);
-
-    /*
-    const findStartingPoint = flightList.find(travel => travel[0] === startingPoint);
-    if (flightList.length > 0 && !findStartingPoint) {
-        return null;
-    }
-
-    itinerary.push(findStartingPoint);
-
-    flightList = flightList.filter(travel => travel[0] !== findStartingPoint[0] && travel[1] !== findStartingPoint[1]);
-
-    console.log('----flightList----', flightList);
-
-    if (flightList.length === 0) {
-        return itinerary;
-    }
-
-    return flightItinerary(flightList, findStartingPoint[0][1]);
-    */
 } 
